@@ -26,7 +26,7 @@ portable-atomic = { version = "1.13.1", features = ["critical-section"] }
 rp2040-boot2 = "0.3.0"
 
 # DHCP server (no_std)
-edge-dhcp = { git = "https://github.com/sysgrok/edge-net", package = "edge-dhcp" }
+edge-dhcp = { git = "https://github.com/sysgrok/edge-net", package = "edge-dhcp", features = ["defmt"] }
 
 [build-dependencies]
 

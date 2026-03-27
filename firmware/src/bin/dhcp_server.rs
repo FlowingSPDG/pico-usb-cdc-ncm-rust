@@ -118,10 +118,11 @@ async fn dhcp_server_task(stack: Stack<'static>) -> ! {
             }
         };
 
-        let dst = if request.broadcast {
+        // RFC 2131: まだ IP を持たないクライアント（ciaddr = 0.0.0.0）にはブロードキャストで届ける
+        let dst = if request.broadcast || request.ciaddr.is_unspecified() {
             IpEndpoint::new(IpAddress::Ipv4(Ipv4Address::BROADCAST), 68)
         } else {
-            IpEndpoint::new(IpAddress::Ipv4(Ipv4Address::new(172, 31, 1, 2)), 68)
+            IpEndpoint::new(IpAddress::Ipv4(request.ciaddr), 68)
         };
 
         if let Err(e) = socket.send_to(frame, dst).await {

@@ -1,8 +1,9 @@
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 runner = "probe-rs run --chip RP2040"
 
-[build]
-target = "thumbv6m-none-eabi"
+# No workspace-wide [build] target: host crates (e.g. host-http) need the host triple.
+# Firmware uses thumbv6m via firmware/.cargo/config.toml when building from firmware/,
+# or pass --target thumbv6m-none-eabi from the repo root (see README).
 
 [env]
 DEFMT_LOG = "debug"

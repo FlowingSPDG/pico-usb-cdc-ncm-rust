@@ -354,6 +354,7 @@ name = "edge-dhcp"
 version = "0.7.0"
 source = "git+https://github.com/sysgrok/edge-net#950a64218f09778c40b8eca83caf30443e2cb857"
 dependencies = [
+ "defmt 1.0.1",
  "edge-nal",
  "edge-raw",
  "embassy-futures",
