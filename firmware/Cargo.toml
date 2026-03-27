@@ -1,0 +1,32 @@
+[package]
+name = "pico-usb-cdc-ncm-firmware"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+embassy-executor = { version = "0.10.0", features = ["platform-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-net = { version = "0.9.0", features = ["defmt", "tcp", "udp", "medium-ethernet", "proto-ipv4"] }
+embassy-rp = { version = "0.10.0", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
+embassy-time = { version = "0.5.1", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-usb = { version = "0.6.0", features = ["defmt"] }
+
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+
+cortex-m = { version = "0.7.6", features = ["inline-asm"] }
+cortex-m-rt = "0.7.0"
+critical-section = "1.1"
+embedded-io-async = { version = "0.7.0", features = ["defmt"] }
+heapless = "0.9"
+static_cell = "2.1"
+portable-atomic = { version = "1.13.1", features = ["critical-section"] }
+
+rp2040-boot2 = "0.3.0"
+
+# DHCP server (no_std)
+edge-dhcp = { git = "https://github.com/sysgrok/edge-net", package = "edge-dhcp" }
+
+[build-dependencies]
+

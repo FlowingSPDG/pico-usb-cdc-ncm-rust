@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+  "firmware",
+  "host-http",
+]
+
+[profile.release]
+debug = true
+
